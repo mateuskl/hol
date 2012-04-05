@@ -1,0 +1,6 @@
+*.class
+*.o
+*.a
+.svn
+.CVS
+*~
