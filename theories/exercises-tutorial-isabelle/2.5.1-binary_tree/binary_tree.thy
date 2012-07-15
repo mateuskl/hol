@@ -53,5 +53,10 @@ apply (auto)
 done
 
 
+lemma "flatten(mirror t) = rev(flatten t)"
+apply(induct_tac t)
+apply(auto) 
+done
+
 end
 
