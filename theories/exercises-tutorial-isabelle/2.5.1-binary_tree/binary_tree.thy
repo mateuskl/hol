@@ -37,6 +37,7 @@ where
 (* value "Node (Node (Node Tip 2 Tip) 1 (Node Tip 3 Tip)) 0 (Node (Node Tip 5 Tip) 4 (Node Tip 6 Tip)" *)
 value "Tip"
 value "Node Tip 2 Tip"
+value "Node (Node Tip 1 Tip) 0 (Node Tip 2 Tip)"
 
 
 (* Proofs *)
