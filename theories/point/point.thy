@@ -22,7 +22,14 @@ value "aPoint"
 
 value "distance aPoint otherPoint" 
 
+lemma "distance a b = distance b a"
+done
+
+lemma distance_comm "distance aPoint otherPoint = distance otherPoint aPoint"
+done
+
 lemma "distance aPoint otherPoint = 4"
 by simp
+done
 
 end
