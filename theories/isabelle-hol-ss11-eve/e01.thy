@@ -7,12 +7,36 @@ datatype 'a list = Nil
 notation Nil ("[]")
 notation Cons (infixr "#" 65) -- "a right-associative infix operator of priority 65"
 
+primrec append :: "'a list \<Rightarrow> 'a list \<Rightarrow> 'a list" (infixr "@" 65)
+where
+  "[] @ ys = ys"
+  | "(x # xs) @ ys = x # (xs @ ys)"
+
+primrec rev :: "'a list => 'a list" where
+  "rev [] = []"
+| "rev (x#xs) = rev xs @ (x#[])"
+
+lemma append_Nil2[simp]: "xs @ [] = xs"
+  by (induct xs) simp_all
+
+lemma append_assoc[simp]: "(xs @ ys) @ zs = xs @ ys @ zs"
+  by (induct xs) simp_all
+
+lemma rev_append[simp]: "rev (xs @ ys) = rev ys @ rev xs"
+  by (induct xs) simp_all
+
+theorem rev_rev_ident[simp]: "rev (rev xs) = xs"
+  by (induct xs) simp_all
+
 
 primrec length :: "'a list \<Rightarrow> nat"
 where
   "length [] = 0"
-  | "length (x # xs) = (length xs) + 1"
+  | "length (x # xs) = length xs + 1"
 
+
+lemma length_append[simp]: "length (xs @ ys) = length xs + length ys"
+  by (induct xs) simp_all
 
 
 value "length ([])"
