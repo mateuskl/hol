@@ -45,6 +45,12 @@ proof -
   show "length (xs @ ys) = length xs + length ys" by (induct xs) simp_all
 qed
 
+primrec snoc :: "'a list \<Rightarrow> 'a \<Rightarrow> 'a list"
+where
+  "snoc [] y = y # []"
+  | "snoc (x # xs) y = x # snoc xs y"
+
+
 value "length ([])"
 
 value "lenght (1 # [])"
