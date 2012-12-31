@@ -51,6 +51,14 @@ where
   | "snoc (x # xs) y = x # snoc xs y"
 
 
+lemma snoc_append[simp]: "snoc (xs @ ys) z = xs @ snoc ys z"
+  by (induct xs) simp_all
+
+lemma snoc_rev[simp]: "snoc (rev xs) x = rev (x # xs)"
+  by (induct xs) simp_all
+
+
+
 value "length ([])"
 
 value "lenght (1 # [])"
