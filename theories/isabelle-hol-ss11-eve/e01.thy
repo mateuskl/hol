@@ -39,6 +39,12 @@ lemma length_append[simp]: "length (xs @ ys) = length xs + length ys"
   by (induct xs) simp_all
 
 
+(* Another way to write the same proof *)
+lemma length_append_v2[simp]: "length (xs @ ys) = length xs + length ys"
+proof -
+  show "length (xs @ ys) = length xs + length ys" by (induct xs) simp_all
+qed
+
 value "length ([])"
 
 value "lenght (1 # [])"
