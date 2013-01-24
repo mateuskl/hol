@@ -45,12 +45,14 @@ proof -
   show "length (xs @ ys) = length xs + length ys" by (induct xs) simp_all
 qed
 
+(* Exercise 3 *)
 primrec snoc :: "'a list \<Rightarrow> 'a \<Rightarrow> 'a list"
 where
   "snoc [] y = y # []"
   | "snoc (x # xs) y = x # snoc xs y"
 
 
+(* Exercise 4 *)
 lemma snoc_append[simp]: "snoc (xs @ ys) z = xs @ snoc ys z"
   by (induct xs) simp_all
 
@@ -58,7 +60,14 @@ lemma snoc_rev[simp]: "snoc (rev xs) x = rev (x # xs)"
   by (induct xs) simp_all
 
 
+(* Exercise 5 *)
+primrec replace :: "'a \<Rightarrow> 'a \<Rightarrow> 'a list \<Rightarrow> 'a list "
+where
+  "replace x y [] = []"
+| "replace x y (z#zs) = (if z = x then y else z) # replace x y zs"
 
+
+(* Some tests *)
 value "length ([])"
 
 value "lenght (1 # [])"
