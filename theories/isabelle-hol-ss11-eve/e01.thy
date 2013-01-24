@@ -66,6 +66,12 @@ where
   "replace x y [] = []"
 | "replace x y (z#zs) = (if z = x then y else z) # replace x y zs"
 
+(* Exercice 6 *)
+lemma replace_append[simp]: "replace x y (ws@zs) = replace x y ws @ replace x y zs"
+  by (induct ws) simp_all
+
+lemma replace_rev[simp]: "replace x y (rev zs) = rev (replace x y zs)"
+  by (induct zs) simp_all
 
 (* Some tests *)
 value "length ([])"
